@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    {% if user.is_authenticated %}
+        {% if is_manager %}
+            <div class="row">
+                <div class="col-sm-11 col-md-6 mx-auto mt-5 px-3">
+                    <h1 class="fw-light">Track and Manage your inventory.</h1>
+                    <p class="fw-light">Keep track of your inventory and receive quantity alerts for low inventory</p>
+                    <div>
+                        <a href="{% url 'inventory-list' %}" class="btn w-100 my-3">Check Inventory</a>
+                    </div>
+                    
+                    <div class="btn-group w-100 fw-light" role="group" aria-label="Basic example">
+                        <button type="button" class="btn">
+                            <a href="{% url 'inbound-list' %}" class="text-decoration-none text-body">Inbound</a>
+                        </button>
+                        <button type="button" class="btn">
+                            <a href="{% url 'outbound-list' %}" class="text-decoration-none text-body">Outbound</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        {% elif is_operator %}
+            <div class="row">
+                <div class="col-sm-11 col-md-6 mx-auto mt-5 px-3">
+                    <h1 class="fw-light">Track and Manage your inventory.</h1>
+                    <p class="fw-light">Keep track of your inventory and receive quantity alerts for low inventory</p>
+                    
+                    <div class="btn-group w-100 fw-light" role="group" aria-label="Basic example">
+                        <button type="button" class="btn">
+                            <a href="{% url 'inbound-list' %}" class="text-decoration-none text-body">Inbound</a>
+                        </button>
+                        <button type="button" class="btn">
+                            <a href="{% url 'outbound-list' %}" class="text-decoration-none text-body">Outbound</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="row">
+            <div class="col-sm-11 col-md-4 mx-auto mt-5 px-3">
+                <h2 class="fw-light">Please Log In to Continue</h2>
+                <a href="{% url 'login' %}" class="btn w-100 mt-3">Log In</a>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

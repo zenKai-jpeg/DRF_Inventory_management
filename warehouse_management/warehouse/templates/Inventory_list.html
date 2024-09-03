@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-10 col-10 mx-auto mt-5">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="fw-bold">Inventory</h1>
+                <a href="{% url 'inventory-add' %}" class="btn">+</a>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">SKU</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Supplier</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if inventories|length == 0 %}
+                    <tr>
+                        <th scope="row">-</th>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                {% endif %}
+
+                {% for inventory in inventories %}
+                    <tr>
+                        <th class="align-middle" scope="row">{{ inventory.id }}</th>
+                        <td class="align-middle">{{ inventory.product_sku }}</td>
+                        <td class="align-middle">{{ inventory.name }}</td>
+                        <td class="align-middle">{{ inventory.category }}</td>
+                        <td class="align-middle">{{ inventory.quantity }}</td>
+                        <td class="align-middle">{{ inventory.location }}</td>
+                        <td class="align-middle">{{ inventory.supplier }}</td>
+                        <td class="align-middle"><a href="{% url 'inventory-edit' inventory.id %}" class="btn fw-bold">Edit</a></td>
+                        <td class="align-middle"><a href="{% url 'inventory-delete' inventory.id %}" class="btn text-danger fw-bold">Delete</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}
