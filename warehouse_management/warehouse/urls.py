@@ -24,12 +24,12 @@ from .views import (
 
 urlpatterns = [
     # api
-    path('api/inventory/', InventoryListCreateView.as_view(), name='inventory-list-create'),
-    path('api/inventory/<int:pk>/', InventoryRetrieveUpdateDestroyView.as_view(), name='inventory-detail'),
-    path('api/inbound/', InboundListCreateView.as_view(), name='inbound-list-create'),
-    path('api/inbound/<int:pk>/', InboundRetrieveUpdateDestroyView.as_view(), name='inbound-detail'),
-    path('api/outbound/', OutboundListCreateView.as_view(), name='outbound-list-create'),
-    path('api/outbound/<int:pk>/', OutboundRetrieveUpdateDestroyView.as_view(), name='outbound-detail'),
+    path('inventory_api/', InventoryListCreateView.as_view(), name='inventory-list-create'),
+    path('inventory_api//<int:pk>/', InventoryRetrieveUpdateDestroyView.as_view(), name='inventory-detail'),
+    path('inbound_api/', InboundListCreateView.as_view(), name='inbound-list-create'),
+    path('inbound_api/<int:pk>/', InboundRetrieveUpdateDestroyView.as_view(), name='inbound-detail'),
+    path('outbound_api/', OutboundListCreateView.as_view(), name='outbound-list-create'),
+    path('outbound_api/<int:pk>/', OutboundRetrieveUpdateDestroyView.as_view(), name='outbound-detail'),
 
     # Inventory
     path('inventory/', InventoryListView.as_view(), name='inventory-list'),
